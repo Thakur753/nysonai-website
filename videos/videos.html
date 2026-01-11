@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>NysLearners - Learning Hub</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+	<nav class="nav">
+		<div class="nav-inner">
+			<a href="#" class="nav-link"><i class="fas fa-home"></i></a>
+			<div class="nav-center">
+				<h1>NysLearners</h1>
+			</div>
+			<div class="user-info">
+				<div class="user-avatar">D</div>
+				<span class="user-name">Demo</span>
+				<i class="fas fa-chevron-down" style="font-size: 10px; margin-left: 5px; color: #666;"></i>
+			</div>
+		</div>
+	</nav>
+
+	<aside class="sidebar">
+		<div class="sidebar-header">
+			<h2>📚 Learning Hub</h2>
+		</div>
+		<ul class="menu">
+			<li><a href="#" class="menu-item active" data-section="notes"><i class="fas fa-sticky-note"></i><span>Notes
+						Section</span></a></li>
+			<li><a href="#" class="menu-item" data-section="resources"><i
+						class="fas fa-folder-open"></i><span>Resources</span></a></li>
+			<li><a href="#" class="menu-item" data-section="practice"><i
+						class="fas fa-dumbbell"></i><span>Practice</span></a></li>
+			<li><a href="#" class="menu-item" data-section="videos"><i
+						class="fas fa-play-circle"></i><span>Videos</span></a></li>
+		</ul>
+	</aside>
+
+	<main class="main-content">
+		<div id="notes" class="section active">
+			<h1><i class="fas fa-sticky-note" style="color: #ff9f43;"></i> Notes Section</h1>
+		</div>
+
+		<div id="resources" class="section">
+			<h1><i class="fas fa-folder-open" style="color: #2ecc71;"></i> Resources Section</h1>
+		</div>
+
+		<div id="practice" class="section">
+			<h1><i class="fas fa-dumbbell" style="color: #e74c3c;"></i> Practice Section</h1>
+		</div>
+
+		<div id="videos" class="section">
+			<h1><i class="fas fa-play-circle" style="color: #9b59b6;"></i> Videos Section</h1>
+
+			<div class="video-dashboard-container">
+				<div class="prog-card-compact">
+					<span class="prog-info-text">Progress: <span id="p-text">0%</span></span>
+					<div class="prog-track-bg">
+						<div class="prog-fill-bar" id="p-bar"></div>
+					</div>
+				</div>
+
+				<div class="player-container-compact">
+					<div class="video-responsive-box">
+						<iframe id="vidIframe" src="https://www.youtube.com/embed/u_v9fA0bF8I" frameborder="0"
+							allowfullscreen></iframe>
+					</div>
+					<div class="video-title-bar">
+						<span id="vidTitle">Part 1: Web Basics</span>
+						<span class="playing-tag"><i class="fas fa-play-circle"></i> Now Playing</span>
+					</div>
+				</div>
+
+				<div class="topic-grid-layout">
+					<div class="topic-card-box active" data-id="1"
+						onclick="changeVid(this, 'u_v9fA0bF8I', 'Part 1: Web Basics')">
+						<div class="icon-circle-box"><i class="fas fa-play"></i></div>
+						<h4>Part 1: Basics</h4>
+						<span class="status-label-text">Click to Play</span>
+					</div>
+					<div class="topic-card-box" data-id="2"
+						onclick="changeVid(this, 'W6NZfCO5SIk', 'Part 2: HTML Structure')">
+						<div class="icon-circle-box"><i class="fas fa-play"></i></div>
+						<h4>Part 2: HTML</h4>
+						<span class="status-label-text">Click to Play</span>
+					</div>
+					<div class="topic-card-box" data-id="3"
+						onclick="changeVid(this, '1PnVor36_40', 'Part 3: CSS Styling')">
+						<div class="icon-circle-box"><i class="fas fa-play"></i></div>
+						<h4>Part 3: CSS</h4>
+						<span class="status-label-text">Click to Play</span>
+					</div>
+					<div class="topic-card-box" data-id="4"
+						onclick="changeVid(this, 'dQw4w9WgXcQ', 'Part 4: JS Logic')">
+						<div class="icon-circle-box"><i class="fas fa-play"></i></div>
+						<h4>Part 4: JS Intro</h4>
+						<span class="status-label-text">Click to Play</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+
+	<script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NysLerners Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-[#f8fafc] text-gray-800">
+
+    <nav class="nav-container bg-white border-b border-gray-200 py-4 px-8 flex justify-between items-center sticky top-0 z-50">
+        <div class="icon-box cursor-pointer">
+            <i data-lucide="home" class="w-6 h-6 text-gray-600"></i>
+        </div>
+        <h1 class="logo text-2xl font-black tracking-tight text-gray-900">
+            Nys<span class="text-blue-600">Lerners</span>
+        </h1>
+        <div class="flex items-center space-x-4">
+            <button class="notification-btn bg-gray-100 p-2 rounded-full">
+                <i data-lucide="bell" class="w-5 h-5 text-gray-600"></i>
+            </button>
+            <div class="profile-icon w-10 h-10 rounded-full bg-blue-100 border border-blue-200 flex items-center justify-center cursor-pointer">
+                <i data-lucide="user" class="text-blue-600"></i>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto p-6 space-y-8">
+
+        <section class="scoreboard-card bg-gradient-to-r from-[#00d2ff] to-[#3a7bd5] rounded-3xl p-8 text-white shadow-xl flex flex-col md:flex-row justify-between items-center">
+            <div class="flex items-center space-x-6">
+                <div class="relative">
+                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Shaurya" alt="Profile" class="profile-img w-24 h-24 rounded-full border-4 border-white/30 shadow-md">
+                    <span class="status-dot absolute bottom-0 right-0 bg-green-500 w-6 h-6 rounded-full border-4 border-white"></span>
+                </div>
+                <div>
+                    <h2 class="text-2xl font-bold italic">Thakur Shaurya</h2>
+                    <p class="text-blue-50 opacity-90">CS Student & Future Developer 🚀</p>
+                </div>
+            </div>
+            
+            <div class="progress-container flex flex-col items-center mt-6 md:mt-0">
+                <div class="relative flex items-center justify-center">
+                    <svg class="w-24 h-24 transform -rotate-90">
+                        <circle cx="48" cy="48" r="40" stroke="currentColor" stroke-width="8" fill="transparent" class="text-white/20" />
+                        <circle cx="48" cy="48" r="40" stroke="currentColor" stroke-width="8" fill="transparent" stroke-dasharray="251" stroke-dashoffset="80" class="text-white" />
+                    </svg>
+                    <span class="absolute text-xl font-bold text-white">68%</span>
+                </div>
+                <p class="mt-2 text-sm font-medium">Daily Goal Progress</p>
+            </div>
+        </section>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="card bg-purple-50 border-purple-100 hover:bg-purple-100" onclick="handleCardClick('Notes')">
+                <i data-lucide="folder" class="w-8 h-8 text-purple-600 mb-4"></i>
+                <h3 class="text-lg font-bold">Notes</h3>
+                <p class="text-sm text-purple-700 opacity-70 italic">12 files uploaded</p>
+            </div>
+            <div class="card bg-blue-50 border-blue-100 hover:bg-blue-100" onclick="handleCardClick('Videos')">
+                <i data-lucide="video" class="w-8 h-8 text-blue-600 mb-4"></i>
+                <h3 class="text-lg font-bold">Videos</h3>
+                <p class="text-sm text-blue-700 opacity-70 italic">8 new tutorials</p>
+            </div>
+            <div class="card bg-yellow-50 border-yellow-100 hover:bg-yellow-100" onclick="handleCardClick('Resources')">
+                <i data-lucide="crown" class="w-8 h-8 text-yellow-600 mb-4"></i>
+                <h3 class="text-lg font-bold">Resources</h3>
+                <p class="text-sm text-yellow-700 opacity-70 italic">PDFs & Cheat Sheets</p>
+            </div>
+            <div class="card bg-green-50 border-green-300 border-2 border-dashed hover:bg-green-100" onclick="handleCardClick('Practice')">
+                <i data-lucide="alert-circle" class="w-8 h-8 text-green-600 mb-4"></i>
+                <h3 class="text-lg font-bold text-green-800">Practice</h3>
+                <p class="text-sm text-green-700 italic">Start New Quiz</p>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div class="history-box bg-white p-6 rounded-3xl border border-gray-100 shadow-sm">
+                <h3 class="font-bold flex items-center mb-4"><i data-lucide="sparkles" class="w-5 h-5 text-blue-500 mr-2"></i> Nyson AI History</h3>
+                <div id="ai-history-list" class="space-y-3">
+                    </div>
+            </div>
+
+            <div class="achievements-box bg-white p-6 rounded-3xl border border-gray-100 shadow-sm">
+                <h3 class="font-bold flex items-center mb-4 text-yellow-600"><i data-lucide="trophy" class="w-5 h-5 mr-2"></i> Achievements</h3>
+                <div class="flex flex-wrap gap-3">
+                    <span class="badge bg-yellow-50 text-yellow-700 border-yellow-200">🔥 Code Master</span>
+                    <span class="badge bg-blue-50 text-blue-700 border-blue-200">🎯 Logic King</span>
+                    <span class="badge bg-green-50 text-green-700 border-green-200">✅ 100% Quiz</span>
+                </div>
+            </div>
+        </div>
+        <main id="main-content" class="max-w-6xl mx-auto p-6 space-y-8">
+    </main>
+    </main>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="script.js"></script>
+</body>
+</html>

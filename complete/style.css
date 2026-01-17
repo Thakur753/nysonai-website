@@ -1,11 +1,29 @@
-/* GLOBAL DARK THEME */
+/* GLOBAL DARK THEME & VARIABLES */
 :root {
+    /* Default Dark Mode Colors */
     --bg-dark: #0a0a0a;
     --card-bg: #161b22;
+    --nav-bg: #0f0f0f;       /* New Variable */
+    --sidebar-bg: #121212;   /* New Variable */
+    --th-bg: #1f242c;        /* New Variable */
+    
     --accent-blue: #3b82f6;
     --text-main: #e6edf3;
     --text-dim: #8b949e;
     --border-color: #30363d;
+}
+
+/* LIGHT THEME OVERRIDES */
+body.light-theme {
+    --bg-dark: #f3f4f6;
+    --card-bg: #ffffff;
+    --nav-bg: #ffffff;
+    --sidebar-bg: #f9fafb;
+    --th-bg: #e5e7eb;
+    
+    --text-main: #1f2937;
+    --text-dim: #4b5563;
+    --border-color: #e5e7eb;
 }
 
 * {
@@ -19,6 +37,7 @@ body {
     background: var(--bg-dark);
     color: var(--text-main);
     overflow-x: hidden;
+    transition: background 0.3s, color 0.3s; /* Smooth transition */
 }
 
 /* NAVBAR */
@@ -27,12 +46,13 @@ body {
     top: 0;
     width: 100%;
     height: 60px;
-    background: #0f0f0f;
-    border-bottom: 1px solid #222;
+    background: var(--nav-bg); /* Use Variable */
+    border-bottom: 1px solid var(--border-color);
     display: flex;
     align-items: center;
     padding: 0 20px;
     z-index: 1000;
+    transition: background 0.3s;
 }
 
 .nav-inner {
@@ -46,7 +66,7 @@ body {
 .nav-left {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 15px; /* Icons ke beech gap */
 }
 
 /* Icon Buttons */
@@ -111,6 +131,7 @@ body {
     justify-content: center;
     align-items: center;
     font-weight: bold;
+    color: white;
 }
 
 /* SIDEBAR */
@@ -120,10 +141,10 @@ body {
     left: 0;
     bottom: 0;
     width: 250px;
-    background: #121212;
-    border-right: 1px solid #333;
+    background: var(--sidebar-bg); /* Use Variable */
+    border-right: 1px solid var(--border-color);
     padding: 20px 0;
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out, background 0.3s;
     transform: translateX(-100%);
     z-index: 999;
 }
@@ -135,7 +156,7 @@ body {
 .sidebar-header {
     padding: 0 20px 20px;
     color: var(--accent-blue);
-    border-bottom: 1px solid #222;
+    border-bottom: 1px solid var(--border-color);
     margin-bottom: 10px;
 }
 
@@ -146,14 +167,14 @@ body {
 }
 
 .close-btn:hover {
-    color: #fff;
+    color: var(--text-main);
 }
 
 .menu-item {
     display: flex;
     align-items: center;
     padding: 12px 20px;
-    color: #aaa;
+    color: var(--text-dim);
     text-decoration: none;
     border-left: 3px solid transparent;
     transition: 0.3s;
@@ -189,20 +210,13 @@ body {
 }
 
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .page-header {
     margin-bottom: 40px;
-    border-bottom: 1px solid #222;
+    border-bottom: 1px solid var(--border-color);
     padding-bottom: 15px;
 }
 
@@ -298,6 +312,7 @@ body {
 .resource-card:hover {
     transform: translateY(-5px);
     border-color: var(--accent-blue);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
 }
 
 .stat-card {
@@ -314,18 +329,15 @@ body {
     background: rgba(59, 130, 246, 0.1);
 }
 
-/* --- FIXED PRACTICE CARD STYLING --- */
+/* PRACTICE CARD */
 .practice-card {
     padding: 30px;
     display: flex;
     flex-direction: column;
-    /* Content upar-niche stack hoga */
     justify-content: space-between;
     align-items: flex-start;
     gap: 20px;
-    /* Badge aur Button ke beech gap */
     min-height: 160px;
-    /* Fix height taaki cards barabar dikhein */
 }
 
 .practice-card h3 {
@@ -356,7 +368,7 @@ body {
 .video-responsive-box {
     border-radius: 15px;
     overflow: hidden;
-    border: 1px solid #333;
+    border: 1px solid var(--border-color);
     position: relative;
     padding-bottom: 56.25%;
     height: 0;
@@ -381,7 +393,7 @@ body {
 }
 
 .custom-table th {
-    background: #1f242c;
+    background: var(--th-bg); /* Use Variable */
     padding: 18px;
     text-align: left;
     color: var(--accent-blue);
@@ -390,7 +402,7 @@ body {
 .custom-table td {
     padding: 18px;
     border-bottom: 1px solid var(--border-color);
-    color: #ccc;
+    color: var(--text-dim);
 }
 
 .btn-click,
@@ -418,40 +430,63 @@ body {
 
 .history-list li {
     padding: 15px 0;
-    border-bottom: 1px solid #333;
+    border-bottom: 1px solid var(--border-color);
     display: flex;
     justify-content: space-between;
     font-size: 15px;
-    color: #ccc;
+    color: var(--text-dim);
 }
 
 @media (max-width: 768px) {
-    .nav {
-        padding: 0 15px;
-    }
+    .nav { padding: 0 15px; }
+    .nav-center h1 { display: none; }
+    .main-content { padding: 20px; }
+    .dashboard-banner { flex-direction: column; text-align: center; gap: 20px; }
+    .stats-grid, .topic-grid-layout, .practice-grid { grid-template-columns: 1fr; gap: 20px; }
+    .page-header h1 { font-size: 24px; }
+}
+/* --- COLORFUL DASHBOARD CARDS (Halka Colour Effect) --- */
 
-    .nav-center h1 {
-        display: none;
-    }
+/* 1. Notes Card (Purple Tint) */
+.stat-card:nth-child(1) {
+    background: linear-gradient(145deg, var(--card-bg) 30%, rgba(168, 85, 247, 0.08) 100%);
+    border-bottom: 3px solid rgba(168, 85, 247, 0.3);
+}
+.stat-card:nth-child(1):hover {
+    background: linear-gradient(145deg, var(--card-bg) 0%, rgba(168, 85, 247, 0.15) 100%);
+    border-color: #a855f7;
+    transform: translateY(-5px) scale(1.02);
+}
 
-    .main-content {
-        padding: 20px;
-    }
+/* 2. Videos Card (Blue Tint) */
+.stat-card:nth-child(2) {
+    background: linear-gradient(145deg, var(--card-bg) 30%, rgba(59, 130, 246, 0.08) 100%);
+    border-bottom: 3px solid rgba(59, 130, 246, 0.3);
+}
+.stat-card:nth-child(2):hover {
+    background: linear-gradient(145deg, var(--card-bg) 0%, rgba(59, 130, 246, 0.15) 100%);
+    border-color: #3b82f6;
+    transform: translateY(-5px) scale(1.02);
+}
 
-    .dashboard-banner {
-        flex-direction: column;
-        text-align: center;
-        gap: 20px;
-    }
+/* 3. Resources Card (Yellow Tint) */
+.stat-card:nth-child(3) {
+    background: linear-gradient(145deg, var(--card-bg) 30%, rgba(234, 179, 8, 0.08) 100%);
+    border-bottom: 3px solid rgba(234, 179, 8, 0.3);
+}
+.stat-card:nth-child(3):hover {
+    background: linear-gradient(145deg, var(--card-bg) 0%, rgba(234, 179, 8, 0.15) 100%);
+    border-color: #eab308;
+    transform: translateY(-5px) scale(1.02);
+}
 
-    .stats-grid,
-    .topic-grid-layout,
-    .practice-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-
-    .page-header h1 {
-        font-size: 24px;
-    }
+/* 4. Practice Card (Green Tint) */
+.stat-card:nth-child(4) {
+    background: linear-gradient(145deg, var(--card-bg) 30%, rgba(34, 197, 94, 0.08) 100%);
+    border-bottom: 3px solid rgba(34, 197, 94, 0.3);
+}
+.stat-card:nth-child(4):hover {
+    background: linear-gradient(145deg, var(--card-bg) 0%, rgba(34, 197, 94, 0.15) 100%);
+    border-color: #22c55e;
+    transform: translateY(-5px) scale(1.02);
 }

@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NysLearners - Learning Hub</title>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="nav-left">
+        <div class="icon-btn mobile-menu-btn" onclick="toggleSidebar()" title="Toggle Menu">
+          <i class="fas fa-bars"></i>
+        </div>
+        <div class="icon-btn home-btn" onclick="scrollToSection('dashboard')" title="Go to Dashboard">
+          <i class="fas fa-home"></i>
+        </div>
+      </div>
+      <div class="nav-center">
+        <h1>NysLearners</h1>
+      </div>
+      <div class="user-info">
+        <div class="user-avatar">T</div>
+        <span class="user-name">Thakur Shaurya</span>
+        <i class="fas fa-chevron-down" style="font-size:10px;margin-left:5px;color:#666;"></i>
+      </div>
+    </div>
+  </nav>
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <div style="display:flex;justify-content:space-between;align-items:center;">
+        <h2>Learning Hub</h2>
+        <i class="fas fa-times close-btn" onclick="toggleSidebar()"></i>
+      </div>
+    </div>
+    <ul class="menu">
+      <li><a href="#notes" class="menu-item" data-section="notes"><i class="fas fa-sticky-note"></i><span>Notes</span></a></li>
+      <li><a href="#resources" class="menu-item" data-section="resources"><i class="fas fa-folder-open"></i><span>Resources</span></a></li>
+      <li><a href="#practice" class="menu-item" data-section="practice"><i class="fas fa-dumbbell"></i><span>Practice</span></a></li>
+      <li><a href="#videos" class="menu-item" data-section="videos"><i class="fas fa-play-circle"></i><span>Videos</span></a></li>
+    </ul>
+  </aside>
+
+  <main class="main-content" id="mainContent">
+
+    <section id="dashboard" class="section">
+      <div class="dashboard-banner">
+        <div class="banner-text">
+          <h1>Welcome back, Thakur!</h1>
+          <p>CS Student • Future Developer • Kalaniketan Polytechnic</p>
+        </div>
+        <div class="progress-circle-container">
+          <div class="circular-progress">
+            <div class="value-container">0%</div>
+          </div>
+          <p class="progress-label">Daily Goal</p>
+        </div>
+      </div>
+
+      <div class="hero-card-row">
+        <div class="hero-card hero-notes" onclick="scrollToSection('notes')">
+          <div class="hero-icon"><i class="fas fa-folder"></i></div>
+          <h3>Notes</h3>
+          <p>12 files uploaded</p>
+        </div>
+        <div class="hero-card hero-videos" onclick="scrollToSection('videos')">
+          <div class="hero-icon"><i class="fas fa-video"></i></div>
+          <h3>Videos</h3>
+          <p>8 new tutorials</p>
+        </div>
+        <div class="hero-card hero-resources" onclick="scrollToSection('resources')">
+          <div class="hero-icon"><i class="fas fa-crown"></i></div>
+          <h3>Resources</h3>
+          <p>PDFs &amp; Cheat Sheets</p>
+        </div>
+        <div class="hero-card hero-practice" onclick="scrollToSection('practice')">
+          <div class="hero-icon"><i class="fas fa-exclamation-circle"></i></div>
+          <h3>Practice</h3>
+          <p>Start New Quiz</p>
+        </div>
+      </div>
+
+      <div class="dashboard-grid-2">
+        
+        <div class="content-box">
+          <h3 style="display:flex; align-items:center; gap:10px;">
+            <i class="fas fa-history" style="color:#3b82f6;"></i> Nyson Ai History
+          </h3>
+          <div class="company-profile-text">
+            <p>
+              <strong>Nyson Ai Connect Private Limited</strong>, established on <strong>21 June 2022</strong>, is a private limited company based in <strong>Jabalpur, Madhya Pradesh</strong>. Engaged in IT & computer-related activities.
+            </p>
+            <div class="highlight-box">
+              <p><strong>CIN:</strong> U72900MP2022PTC061459</p>
+              <p><strong>Registered:</strong> ROC Gwalior</p>
+            </div>
+            <p class="small-info">
+              <i class="fas fa-user-tie" style="color:#3b82f6;"></i> <strong>Directors:</strong> Madhu Khare, Sonali Namdeo<br>
+              <i class="fas fa-calendar-alt" style="color:#eab308;"></i> <strong>Last AGM:</strong> 30 Sep 2025
+            </p>
+          </div>
+        </div>
+
+        <div class="content-box achievement-box">
+          <h3 style="display:flex; align-items:center; gap:10px; margin-bottom:20px;">
+            <i class="fas fa-trophy" style="color:#eab308;"></i> Student Achievements
+          </h3>
+          
+          <div class="badges-grid" id="badgesList">
+            <p style="color:var(--text-dim); font-size:14px;">Loading badges...</p>
+          </div>
+
+          <div style="height:1px; background:var(--border-color); margin: 20px 0;"></div>
+
+          <div class="stats-grid-container">
+            <div class="stat-mini-card">
+              <div class="stat-icon-circle" style="color:#3b82f6; background:rgba(59,130,246,0.1);">
+                <i class="fas fa-users"></i>
+              </div>
+              <div class="stat-info">
+                <span class="stat-num" id="totalStudentsValue">--</span>
+                <span class="stat-lbl">Students</span>
+              </div>
+            </div>
+            <div class="stat-mini-card">
+              <div class="stat-icon-circle" style="color:#22c55e; background:rgba(34,197,94,0.1);">
+                <i class="fas fa-chart-line"></i>
+              </div>
+              <div class="stat-info">
+                <span class="stat-num" id="avgScoreValue">--</span>
+                <span class="stat-lbl">Avg Score</span>
+              </div>
+            </div>
+            <div class="stat-mini-card">
+              <div class="stat-icon-circle" style="color:#eab308; background:rgba(234,179,8,0.1);">
+                <i class="fas fa-medal"></i>
+              </div>
+              <div class="stat-info">
+                <span class="stat-num" id="batchesEarnedValue">--</span>
+                <span class="stat-lbl">Batches</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="notes" class="section">
+      <div class="page-header">
+        <h1><i class="fas fa-sticky-note" style="color:#a855f7;"></i> Notes Library</h1>
+      </div>
+      <div class="table-card">
+        <table class="custom-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Topic</th>
+              <th>Description</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="fw-600 col-blue">1</td>
+              <td>Python Fundamentals</td>
+              <td>Variables, Loops, Functions</td>
+              <td><a href="#" class="btn-click">View</a></td>
+            </tr>
+            <tr>
+              <td class="fw-600 col-blue">2</td>
+              <td>HTML5 Mastery</td>
+              <td>Tags, Forms, SEO</td>
+              <td><a href="#" class="btn-click">View</a></td>
+            </tr>
+            <tr>
+              <td class="fw-600 col-blue">3</td>
+              <td>CSS3 Flexbox</td>
+              <td>Layouts, Positioning</td>
+              <td><a href="#" class="btn-click">View</a></td>
+            </tr>
+            <tr>
+              <td class="fw-600 col-blue">4</td>
+              <td>JavaScript ES6+</td>
+              <td>Promises, Async/Await</td>
+              <td><a href="#" class="btn-click">View</a></td>
+            </tr>
+            <tr>
+              <td class="fw-600 col-blue">5</td>
+              <td>React JS</td>
+              <td>Components, Hooks</td>
+              <td><a href="#" class="btn-click">View</a></td>
+            </tr>
+            <tr>
+              <td class="fw-600 col-blue">6</td>
+              <td>SQL Database</td>
+              <td>Queries &amp; Joins</td>
+              <td><a href="#" class="btn-click">View</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="resources" class="section">
+      <div class="page-header">
+        <h1><i class="fas fa-folder-open" style="color:#eab308;"></i> Resources</h1>
+      </div>
+      <div class="topic-grid-layout">
+        <div class="resource-card">
+          <div class="res-icon"><i class="fas fa-file-pdf"></i></div>
+          <h3>CS Syllabus 2026</h3>
+          <p class="card-subtitle">Type: PDF</p>
+          <a href="#" class="btn-click">Download</a>
+        </div>
+        <div class="resource-card">
+          <div class="res-icon"><i class="fas fa-code"></i></div>
+          <h3>JS Cheatsheet</h3>
+          <p class="card-subtitle">Type: Image</p>
+          <a href="#" class="btn-click">Download</a>
+        </div>
+        <div class="resource-card">
+          <div class="res-icon"><i class="fas fa-database"></i></div>
+          <h3>SQL Commands</h3>
+          <p class="card-subtitle">Type: PDF</p>
+          <a href="#" class="btn-click">Download</a>
+        </div>
+        <div class="resource-card">
+          <div class="res-icon"><i class="fab fa-react"></i></div>
+          <h3>React Roadmap</h3>
+          <p class="card-subtitle">Type: Link</p>
+          <a href="#" class="btn-click">Download</a>
+        </div>
+        <div class="resource-card">
+          <div class="res-icon"><i class="fas fa-laptop-code"></i></div>
+          <h3>Interview QA</h3>
+          <p class="card-subtitle">Type: PDF</p>
+          <a href="#" class="btn-click">Download</a>
+        </div>
+        <div class="resource-card">
+          <div class="res-icon"><i class="fas fa-book"></i></div>
+          <h3>Clean Code Book</h3>
+          <p class="card-subtitle">Type: E-Book</p>
+          <a href="#" class="btn-click">Download</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="practice" class="section">
+      <div class="page-header">
+        <h1><i class="fas fa-code" style="color:#22c55e;"></i> Practice</h1>
+      </div>
+      <div class="practice-grid">
+        <div class="practice-card">
+          <div class="w-100">
+            <h3>Sum of Array</h3>
+            <span class="badge-tag easy">Easy</span>
+          </div>
+          <a href="#" class="btn-solve">Solve</a>
+        </div>
+        <div class="practice-card">
+          <div class="w-100">
+            <h3>Binary Search</h3>
+            <span class="badge-tag medium">Medium</span>
+          </div>
+          <a href="#" class="btn-solve">Solve</a>
+        </div>
+        <div class="practice-card">
+          <div class="w-100">
+            <h3>Merge Sort</h3>
+            <span class="badge-tag hard">Hard</span>
+          </div>
+          <a href="#" class="btn-solve">Solve</a>
+        </div>
+        <div class="practice-card">
+          <div class="w-100">
+            <h3>Linked List Cycle</h3>
+            <span class="badge-tag medium">Medium</span>
+          </div>
+          <a href="#" class="btn-solve">Solve</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="videos" class="section">
+      <div class="page-header">
+        <h1><i class="fas fa-play-circle" style="color:#3b82f6;"></i> Videos</h1>
+      </div>
+      <div class="video-dashboard-container">
+        <div class="video-responsive-box">
+          <iframe id="vidIframe" src="https://www.youtube.com/embed/uv9fA0bF8I" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <div class="topic-grid-layout" id="video-list-container">
+          <div class="topic-card-box active" onclick="changeVid(this,'uv9fA0bF8I')">
+            <div class="vid-icon"><i class="fas fa-play-circle"></i></div>
+            <h4>Web Dev Basics</h4>
+          </div>
+          <div class="topic-card-box" onclick="changeVid(this,'W6NZfCO5SIk')">
+            <div class="vid-icon"><i class="fas fa-play-circle"></i></div>
+            <h4>HTML Structure</h4>
+          </div>
+          <div class="topic-card-box" onclick="changeVid(this,'1PnVor35m40')">
+            <div class="vid-icon"><i class="fas fa-play-circle"></i></div>
+            <h4>CSS Flexbox</h4>
+          </div>
+          <div class="topic-card-box" onclick="changeVid(this,'dQw4w9WgXcQ')">
+            <div class="vid-icon"><i class="fas fa-play-circle"></i></div>
+            <h4>JS Logic Building</h4>
+          </div>
+          <div class="topic-card-box" onclick="changeVid(this,'TNhaWiYaCc4')">
+            <div class="vid-icon"><i class="fas fa-play-circle"></i></div>
+            <h4>React Hooks</h4>
+          </div>
+          <div class="topic-card-box" onclick="changeVid(this,'9emXNzqCKyg')">
+            <div class="vid-icon"><i class="fas fa-play-circle"></i></div>
+            <h4>Backend Intro</h4>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
